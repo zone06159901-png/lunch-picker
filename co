@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ 팀 점심 메뉴 랜덤 뽑기!</title>
+    <style>
+        /* CSS: 웹페이지 디자인 설정 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        /* 결과 표시 영역 스타일 */
+        #result {
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        .menu-name {
+            font-size: 2em;
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .menu-detail {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #555;
+        }
+        .image-gallery img, #route-map img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: block; 
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image-gallery img {
+            width: 45%; 
+        }
+    </style>
+</head>
+<body> <div class="container">
+        <h1>점심 메뉴 고민 끝! 🔮</h1>
+        
+        <p class="menu-detail">메뉴 리스트는 팀원들과 공유하는 **Google Sheets**에서 관리됩니다.</p>
+        
+        <hr>
+        
+        <button onclick="pickRandomMenu()">🍽️ 랜덤 뽑기!</button>
+        
+        <div id="result">
+            <p>메뉴 로드 중...</p>
+        </div>
+    </div>
+
+    <script>
+        /* ================================================================= */
+        /* ========== CSV URL 교체 완료 (사용자 입력 주소) ========== */
+        // 제공해 주신 Google Sheets의 CSV 주소가 여기에 정확히 들어 있습니다.
+        const GOOGLE_SHEET_CSV_URL = '
